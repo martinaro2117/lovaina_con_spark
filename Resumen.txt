@@ -1,0 +1,24 @@
+Resumen del Entregable
+Entregable/ — 2 notebooks con outputs renderizados
+louvain_twitter_principal.ipynb (notebook principal, 38 celdas, 22 ejecutadas):
+1. Contexto — 2 párrafos sobre necesidad de Big Data en redes sociales a escala Twitter
+2. Objetivos — 2 párrafos: objetivo principal (Louvain paralelo) y secundario (caracterización temática)
+3. Descripción de la solución — ≤600 palabras: preprocesamiento Spark, fases Louvain, decisiones de escalabilidad (broadcast, particionado, reduceByKey)
+4. Figura explicativa — Diagrama de arquitectura del pipeline completo generado con matplotlib
+5. Experimentos — Speed-up (1→2→4→8 workers), size-up (25%→100% datos), scale-up (datos+workers proporcionales); resultados reales sobre 1M tweets
+6. Métricas — Modularidad Q=0.0203, 19,768 comunidades detectadas, convergencia en 10 iteraciones, conductancia
+7. Discusión — Entre 300-600 palabras analizando resultados vs. motivación
+8. Contribuciones — 1 párrafo ficticio × 4 miembros del grupo
+louvain_twitter_complementario.ipynb (14 celdas ejecutadas):
+- Distribución de grado (ley de potencias confirmada en log-log)
+- Comparativa Louvain secuencial vs. Spark (Q≈equivalente)
+- Sensibilidad al número de iteraciones
+- Análisis temporal y de fuentes de tweets
+- Usuarios influyentes por in-degree ponderado
+- Métricas globales de red (densidad, componente gigante, clustering)
+- Impacto del tipo de aristas (RT / menciones / combinado)
+Resultados reales obtenidos
+- 1,000,000 tweets procesados · 498,133 usuarios en el grafo · 657,052 aristas
+- Louvain Spark: Q=0.0203, 19,768 comunidades, top comunidad ~550 usuarios
+- Speed-up medido: 1x → 1.21x → 1.50x → 2.02x (1→8 workers)
+- 16 figuras y 6 CSVs exportados en data/
